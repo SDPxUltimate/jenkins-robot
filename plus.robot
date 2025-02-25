@@ -9,8 +9,8 @@ ${BASE_URL}       http://127.0.0.1:5001/is_prime
 Get Calculation JSON
     [Arguments]    ${num1}    ${status}
     ${resp}=     GET    ${BASE_URL}/${num1}    expected_status=${status}
-    # Run Keyword If    ${resp.status_code} == ${status}    Return From Keyword    ${resp.json()} 
-    Run Keyword If    ${resp.status_code} == ${status}    Return From Keyword    ${resp.text} 
+    Run Keyword If    ${resp.status_code} == ${status}    Return From Keyword    ${resp.json()} 
+    # Run Keyword If    ${resp.status_code} == ${status}    Return From Keyword    ${resp.text} 
     Fail    Unexpected status code: ${resp.status_code}
 
 
@@ -18,15 +18,15 @@ Get Calculation JSON
 
 Test Is Prime 17
     ${json_resp}=    Get Calculation JSON    17    200
-    Should Be Equal As Strings     ${json_resp}     true
+    Should Be True    ${json_resp}     
 
 Test Is Prime 36
     ${json_resp}=    Get Calculation JSON    36    200
-    Should Be Equal As Strings     ${json_resp}     false
+    Should Not Be True    ${json_resp}
 
 Test Is Prime 13219
     ${json_resp}=    Get Calculation JSON    13219    200
-    Should Be Equal As Strings     ${json_resp}     true
+    Should Be True     ${json_resp}
 
 # Test Plus Numbers 8 and 4
 #     ${json_resp}=    Get Calculation JSON    8    4    200
