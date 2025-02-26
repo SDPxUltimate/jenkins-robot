@@ -20,11 +20,11 @@ Test X Is 1
     ${json_resp}=    Get Calculation JSON    1    200
     Should Be Equal As Numbers     ${json_resp}    12.56
 
-Test Is Prime 36
+Test X Is Neg10
     ${json_resp}=    Get Calculation JSON    -10    200
     Should Be Equal As Numbers    ${json_resp}    0.00
 
-Test Is Prime 13219
+Test X IS 1dot5
     ${json_resp}=    Get Calculation JSON    1.5    200
     Should Be Equal As Numbers     ${json_resp}    28.26
 
