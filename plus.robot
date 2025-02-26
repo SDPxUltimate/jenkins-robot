@@ -2,7 +2,7 @@
 Library           RequestsLibrary
 
 *** Variables ***
-${BASE_URL}       http://127.0.0.1:5001/is_prime
+${BASE_URL}       http://127.0.0.1:5001/cir_sur
 
 *** Keywords ***
 
@@ -16,17 +16,17 @@ Get Calculation JSON
 
 *** Test Cases ***
 
-Test Is Prime 17
-    ${json_resp}=    Get Calculation JSON    17    200
-    Should Be True    ${json_resp}     
+Test X Is 1
+    ${json_resp}=    Get Calculation JSON    1    200
+    Should Be Equal As Numbers     ${json_resp}    12.56
 
 Test Is Prime 36
-    ${json_resp}=    Get Calculation JSON    36    200
-    Should Not Be True    ${json_resp}
+    ${json_resp}=    Get Calculation JSON    -10    200
+    Should Be Equal As Numbers    ${json_resp}    0.00
 
 Test Is Prime 13219
-    ${json_resp}=    Get Calculation JSON    13219    200
-    Should Be True     ${json_resp}
+    ${json_resp}=    Get Calculation JSON    1.5    200
+    Should Be Equal As Numbers     ${json_resp}    28.26
 
 # Test Plus Numbers 8 and 4
 #     ${json_resp}=    Get Calculation JSON    8    4    200
